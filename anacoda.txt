@@ -1,0 +1,29 @@
+$ conda info -e
+#仮想環境を確認
+
+>>>ライブラリ名.__file__
+#ライブラリの場所を確認
+
+$ conda list -n 環境名 or 
+$ conda list 
+#ライブラリ一覧
+
+$ conda create -n 環境名
+or
+$ conda create —name 環境名
+#仮想環境の作成( pythonなし)
+
+$ conda create -n 環境名 python=バージョン
+#仮想環境の作成( pythonあり)
+
+$source activate 環境名
+#仮想環境の起動
+
+$ conda deactivate
+#仮想環境を終了
+
+$ conda remove -n xxxx —all
+#仮想環境を削除
+
+python setup.py develop
+
