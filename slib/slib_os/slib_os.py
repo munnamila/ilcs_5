@@ -1,5 +1,7 @@
 import os
 
+def test():
+    print('You already can use slib_os!!!')
 
 def mkdir(dir_name):
     isExists = os.path.exists(dir_name)
