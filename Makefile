@@ -8,6 +8,8 @@ install_sshd:
 	sudo apt-get install openssh-server
 	dpkg -l | grep ssh
 	ps -e | grep ssh
+	sudo apt-get install net-tools
+	ifconfig
 
 install-anaconda:
 	wget https://repo.anaconda.com/archive/Anaconda3-2020.11-Linux-x86_64.sh
