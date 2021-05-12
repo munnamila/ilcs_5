@@ -5,20 +5,20 @@
 
 import cv2
 import glob
-from tqdm import tqdm
+# from tqdm import tqdm
 import os
 import argparse
 
-def makeVideo(path, size):
+def frmae2video(path, size):
     filelist = os.listdir(path)
     filelist2 = [os.path.join(path, i) for i in filelist]
     filelist2 = sorted(filelist2)
     # print(filelist2)
     fps = 30  
-    video = cv2.VideoWriter(path + "/Video.mp4", cv2.VideoWriter_fourcc('M', 'P', '4', 'v'), fps,
+    video = cv2.VideoWriter(path + "/Video.avi", cv2.VideoWriter_fourcc('M','J','P','G'), fps,
                             size) 
 
-    for item in tqdm(filelist2):
+    for item in filelist2:
         # print(item)
         if item.endswith('.jpg'):
             # print(item)
@@ -38,5 +38,5 @@ if __name__ == '__main__':
     parser.add_argument('h', type = int, help = 'h')
     args = parser.parse_args()
 
-    makeVideo(args.path, (args.w, args.h))
+    frmae2video(args.path, (args.w, args.h))
     # makeVideo(args.path, (854, 480))
