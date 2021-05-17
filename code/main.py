@@ -3,41 +3,49 @@
 import glob
 
 
-import keypoint_from_images as kfi
-import sys
-sys.path.append('../../../..')
-import ilcs_5.slib.slib_os.slib_os as so
-import ilcs_5.tool.frame2video as fv
-import ilcs_5.tool.video2frame as vf
+import keypoints_from_images as kfi
+import slib_os as so
+import frame2video as fv
+import video2frame as vf
 
 
-def makedir(path_vidoe):
-    dir_name = path_vidoe.split('/')[-1]
+def makedir(path_video):
+    dir_name = path_video.split('/')[-1]
     dir_name = dir_name.split('.')[0]
-    path_vidoe_dir = so.merge(path_vidoe.split('/')[:-1]) + '/' + dir_name
-    so.mkdir(path_vidoe_dir)
-    return path_vidoe_dir
+    path_video_dir = so.merge(path_video.split('/')[:-1]) + '/' + dir_name
+    so.mkdir(path_video_dir)
+    return path_video_dir
 
 
-def main(path_vidoe):
-    path_vidoe_dir = makedir(path_vidoe)# create a dir which name is as same as video's
+def video_estimation(path_video):
+    path_video_dir = makedir(path_video)# create a dir which name is as same as video's
 
-    so.mkdir(path_vidoe_dir + '/video_1')
-    so.mkdir(path_vidoe_dir + '/video_2')
-    so.mkdir(path_vidoe_dir + '/data')# creat dir: video_1 video_2 data
+    so.mkdir(path_video_dir + '/video_1')
+    so.mkdir(path_video_dir + '/video_2')
+    so.mkdir(path_video_dir + '/data')# creat dir: video_1 video_2 data
 
-    vf.video2frame(path_vidoe, path_vidoe_dir + '/video_1')# video to frame
+
+    vf.video2frame(path_video, path_video_dir + '/video_1')# video to frame
 
     
 
-    kfi.keypoints_from_images(path_vidoe_dir + '/video_1', 
-    path_vidoe_dir + '/video_2', 
-    path_vidoe_dir + '/data')# detect human keypoints and outup images
+    kfi.keypoints_from_images(path_video_dir + '/video_1', 
+    path_video_dir + '/video_2', 
+    path_video_dir + '/data')# detect human keypoints and outup images
 
-    fv.frmae2video(path_vidoe_dir + '/video_2', (w, h))# 自動的に画像のサイズを検出することが必要、今は手動で記入
+    fv.frame2video(path_video_dir + '/video_2')
 
+    so.mv(path_video, path_video_dir + '/')
 
-    print('done')
+def videos_estimation(path_file):
+
+    files = sorted(glob.glob(path_file + '/*.mp4'))
+    
+    for i in files:
+
+        video_estimation(i)
+
 
 if __name__ == '__main__':
-    main('/home/flowerdance/openpose/examples/media/video/murase.mp4')
+    videos_estimation('/home/flowerdance/openpose/examples/media/video_test')
+

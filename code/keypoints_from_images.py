@@ -1,5 +1,8 @@
 # From Python
 # It requires OpenCV installed for Python
+
+# meirin sou
+
 import sys
 import cv2
 import os
@@ -32,9 +35,11 @@ def keypoints_from_images(src, tgt_imgs, tgt_points):
 
         # Flags
         parser = argparse.ArgumentParser()
-        parser.add_argument("--image_dir", default="../../../examples/media/test/", help="Process a directory of images. Read all standard formats (jpg, png, bmp, etc.).")
+        parser.add_argument("--image_dir", default=src, help="Process a directory of images. Read all standard formats (jpg, png, bmp, etc.).")
         parser.add_argument("--no_display", default=False, help="Enable to disable the visual display.")
         args = parser.parse_known_args()
+
+
 
         # Custom Params (refer to include/openpose/flags.hpp for more parameters)
         params = dict()
@@ -78,7 +83,7 @@ def keypoints_from_images(src, tgt_imgs, tgt_points):
             opWrapper.emplaceAndPop(op.VectorDatum([datum]))
 
             # print("Body keypoints: \n" + str(datum.poseKeypoints))
-            np.save(tgt_points + '/' + '%06d' % count + '.npy', datum.poseKeypoints)
+            np.savez(tgt_points + '/' + '%06d' % count + '.npz', pose = datum.poseKeypoints, face = datum.faceKeypoints, hand_left = datum.handKeypoints[0], hand_right = datum.handKeypoints[1])
 
             if not args[0].no_display:
                 # cv2.imshow("OpenPose 1.7.0 - Tutorial Python API", datum.cvOutputData)
