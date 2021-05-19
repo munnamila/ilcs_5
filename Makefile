@@ -25,3 +25,6 @@ addusers:
 	sudo adduser warisawa
 	sudo adduser kurita
 
+install_tools:
+	sudo apt install tmux
+	sudo apt install vim
