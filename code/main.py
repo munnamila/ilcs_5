@@ -4,6 +4,7 @@ import glob
 
 
 import keypoints_from_images as kfi
+import keypoints_from_images_coco as kfic
 import slib_os as so
 import frame2video as fv
 import video2frame as vf
@@ -29,7 +30,11 @@ def video_estimation(path_video):
 
     
 
-    kfi.keypoints_from_images(path_video_dir + '/video_1', 
+    # kfi.keypoints_from_images(path_video_dir + '/video_1', 
+    # path_video_dir + '/video_2', 
+    # path_video_dir + '/data')# detect human keypoints and outup images
+
+    kfic.keypoints_from_images(path_video_dir + '/video_1', 
     path_video_dir + '/video_2', 
     path_video_dir + '/data')# detect human keypoints and outup images
 
@@ -47,5 +52,5 @@ def videos_estimation(path_file):
 
 
 if __name__ == '__main__':
-    videos_estimation('/home/flowerdance/openpose/examples/media/video_test')
+    videos_estimation('/home/ilcs/openpose/examples/tutorial_api_python/code/video')
 
