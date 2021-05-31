@@ -11,46 +11,62 @@ def pose2plot(pose, screen):
     # input: keypoint of body25 from openpose, screen
     # output: show keypoint
 
-    len_pose = pose.shape[1]
 
-    for i in range(len_pose):
 
-        if pose[0,i,0] == 0:
-            continue
+    try:
 
-        else:
-            x = pose[0, i, 0]
-            y = pose[0, i, 1]
-            n = pose[0, i, 2] * 255
-            cv2.circle(screen, ((x/2).astype(np.float32), (y/2).astype(np.float32)), 3, (0, n, 255-n), -1)# origin
-            # cv2.circle(canvas, (pose[0,i,0], pose[0,i,1]), 2, (255, 255, 255), -1)
-            # screen = cv2.resize(screen, (640, 360))
+        len_pose = pose.shape[1]
+
+        for i in range(len_pose):
+
+            if pose[0,i,0] == 0:
+                    continue
+
+            else:
+                    x = int(pose[0, i, 0])
+                    y = int(pose[0, i, 1])
+                    n = int(pose[0, i, 2] * 255)
+                    cv2.circle(screen, (x, y), 3, (0, n, 255-n), -1)# origin
+                    # cv2.circle(canvas, (pose[0,i,0], pose[0,i,1]), 2, (255, 255, 255), -1)
+                    # screen = cv2.resize(screen, (640, 360))
+
+    except:
+        pass
         
     cv2.imshow('test', screen)
     cv2.waitKey(1)
+
 
 def pose2plot_seikika(pose, screen):
     # input: keypoint of body25 from openpose, screen
     # output: show keypoint normalized
 
-    len_pose = pose.shape[1]
+    try:
 
-    for i in range(len_pose):
+        len_pose = pose.shape[1]
 
-        dx = pose[0, 1, 0] - 640
-        dy = pose[0, 1, 1] - 320
+        for i in range(len_pose):
 
-        if pose[0,i,0] == 0:
-            continue
+            dx = int(pose[0, 1, 0] - 640)
+            dy = int(pose[0, 1, 1] - 320)
 
-        else:
-            x = pose[0, i, 0]
-            y = pose[0, i, 1]
-            n = pose[0, i, 2] * 255
+            if pose[0,i,0] == 0:
+                continue
 
-            cv2.circle(screen, (((x - dx) / 2).astype(np.float32), ((y - dy) / 2).astype(np.float32)), 3, (0, n, 255 - n), -1)
+            else:
+                x = int(pose[0, i, 0])
+                y = int(pose[0, i, 1])
+                n = int(pose[0, i, 2] * 255)
+
+                # cv2.circle(screen, (((x - dx) / 2).astype(np.float32), ((y - dy) / 2).astype(np.float32)), 3, (0, n, 255 - n), -1)
+                cv2.circle(screen, (x-dx-320, y-dy), 3, (0, n, 255-n), -1)# origin
 
 
-        
+    except:
+        pass
+
     cv2.imshow('test_', screen)
     cv2.waitKey(1)
+
+if __name__ == '__main__':
+    pass
