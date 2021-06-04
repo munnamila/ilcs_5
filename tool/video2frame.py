@@ -25,5 +25,6 @@ def video2frame(src, tgt):
     cap.release()
 
 if __name__ == '__main__':
-    video2frame('/Users/songminglun/Downloads/kurita_001.mp4', '/Users/songminglun/Downloads/test_kurita_2')
+    video2frame('/Users/songminglun/Documents/ILCS/murase/murase.mp4', '/Users/songminglun/Documents/ILCS/murase/murase')
+    print('Done')
 
