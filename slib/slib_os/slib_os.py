@@ -15,6 +15,14 @@ def mkdir(dir_name):
 def mv(src, tgt):
     os.system('mv ' + src + ' ' + tgt)
 
+def cp(mode, src, tgt):
+    if mpde == '-r':
+        os.system('cp ' + '-r ' +  src + ' ' + tgt)
+
+    else:
+        os.system('cp ' + src + ' ' + tgt)
+
+
 def merge(lists):
 
     new_path = '/'
@@ -25,7 +33,6 @@ def merge(lists):
 
     return new_path
 
-def 
 
 if __name__ == '__main__':
     pass

@@ -3,11 +3,10 @@
 import glob
 
 
-import keypoints_from_images as kfi
-import keypoints_from_images_coco as kfic
+import func.keypoints_from_images as kfi
 import slib_os as so
-import frame2video as fv
-import video2frame as vf
+import func.frame2video as fv
+import func.video2frame as vf
 
 
 def makedir(path_video):
@@ -18,39 +17,47 @@ def makedir(path_video):
     return path_video_dir
 
 
-def video_estimation(path_video):
-    path_video_dir = makedir(path_video)# create a dir which name is as same as video's
+def video_estimation(folder_path):
+    # path_video_dir = makedir(path_video)# create a dir which name is as same as video's
 
-    so.mkdir(path_video_dir + '/video_1')
-    so.mkdir(path_video_dir + '/video_2')
-    so.mkdir(path_video_dir + '/data')# creat dir: video_1 video_2 data
+    so.mkdir(folder_path + '/video_1')
+    so.mkdir(folder_path + '/video_2')
+    so.mkdir(folder_path + '/data')# creat dir: video_1 video_2 data
+
+    folder_name = folder_path.split('/')[-1]
+
+    video_path = folder_path + '/' + folder_name + '.mp4'
 
 
-    vf.video2frame(path_video, path_video_dir + '/video_1')# video to frame
+    vf.video2frame(video_path, folder_path + '/video_1')# video to frame
 
+
+    kfi.keypoints_from_images(folder_path + '/video_1', 
+    folder_path + '/video_2', 
+    folder_path + '/data')# detect human keypoints and outup images
+
+    # kfic.keypoints_from_images(folder_path + '/video_1', 
+    # folder_path + '/video_2', 
+    # folder_path + '/data')# detect human keypoints and outup images
+
+    fv.frame2video(folder_path + '/video_2')
+
+    so.mv(video_path, folder_path + '/')
+
+# def videos_estimation(path_file):
+
+#     files = sorted(glob.glob(path_file + '/*.mp4'))
     
+#     for i in files:
 
-    # kfi.keypoints_from_images(path_video_dir + '/video_1', 
-    # path_video_dir + '/video_2', 
-    # path_video_dir + '/data')# detect human keypoints and outup images
+#         video_estimation(i)
 
-    kfic.keypoints_from_images(path_video_dir + '/video_1', 
-    path_video_dir + '/video_2', 
-    path_video_dir + '/data')# detect human keypoints and outup images
+def main(folder_path):
 
-    fv.frame2video(path_video_dir + '/video_2')
+    folders = sorted(glob.glob(foder_path + '/*'))
 
-    so.mv(path_video, path_video_dir + '/')
-
-def videos_estimation(path_file):
-
-    files = sorted(glob.glob(path_file + '/*.mp4'))
-    
-    for i in files:
-
-        video_estimation(i)
-
+    for folder in folders:
 
 if __name__ == '__main__':
-    videos_estimation('/home/ilcs/openpose/examples/tutorial_api_python/code/video')
+    main('/home/ilcs/openpose/examples/tutorial_api_python/code/video')
 

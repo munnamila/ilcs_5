@@ -61,6 +61,6 @@ def frame2video(path):
         
 
 if __name__ == '__main__':
-    files = sorted(glob.glob('/Users/songminglun/Documents/ILCS/murase/data/*'))
+    files = sorted(glob.glob('/Users/songminglun/Documents/ILCS/2021/MTG資料/0521/video/kurita_001/video_6'))
     for i in files:
         frame2video(i)
