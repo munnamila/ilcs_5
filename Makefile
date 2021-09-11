@@ -28,3 +28,21 @@ addusers:
 install_tools:
 	sudo apt install tmux
 	sudo apt install vim
+
+
+install_openface:
+	conda install -c anaconda opencv
+	conda install -c anaconda numpy
+	conda install -c anaconda pandas
+	conda install -c anaconda scipy
+	conda install -c anaconda scikit-learn
+	conda install -c anaconda scikit-image
+	pip2 install dlib
+	conda install -c conda-forge txaio
+	conda install -c anaconda twisted
+	conda install -c conda-forge autobahn
+	conda install -c anaconda openssl
+	conda install -c anaconda pyopenssl
+	conda install -c conda-forge imagehash
+	conda install -c anaconda service_identity
+

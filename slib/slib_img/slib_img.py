@@ -1,84 +1,60 @@
-from os import name
-from platform import machine
 import cv2
-import glob
-import time
-import os
+import numpy as np
+import matplotlib.pyplot as plt
 
-def imshow(src):
+class Img():
 
-    files = sorted(glob.glob(src + '/*'))
-    for i in files:
-        img = cv2.imread(i)
-        cv2.imshow('test', img)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+    def __init__(self, path):
+        '''import picture'''
 
-# def frame2video(path, size, mode = 0):
-#     filelist = os.listdir(path)
-#     filelist2 = [os.path.join(path, i) for i in filelist]
-#     filelist2 = sorted(filelist2)
-#     # print(filelist2)
-#     fps = 30  
+        self.path = path
+        self.img = cv2.imread(self.path)
 
-#     out = time.strftime("%Y-%m-%d_%H:%M:%S", time.localtime())
+    def size(self):
+        # I.size()
 
-#     if mode == 1:
-#         video = cv2.VideoWriter(path + "/Video.avi", cv2.VideoWriter_fourcc('M','J','P','G'), fps,
-#                             size) 
+        return self.img.shape
 
-#     elif mode == 0:
-#         video = cv2.VideoWriter('/Users/songminglun/Documents/ILCS/ilcs_5/slib/slib_img/saved_video/' + str(out) + '.avi', cv2.VideoWriter_fourcc('M','J','P','G'), fps,
-#                             size) 
+    def to_gray(self):
+        '''グレー化'''
+
+        self.img = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
+
+        return self.img
 
 
-#     for item in filelist2:
-#         # print(item)
-#         if item.endswith('.jpg'):
-#             # print(item)
-#             img = cv2.imread(item)
-#             video.write(img)
+    def to_RGB(self):
 
-#     video.release()
-#     cv2.destroyAllWindows()
-#     print('DONE')
+        self.img = cv2.cvtColor(self.img, cv2.COLOR_BGR2RGB)
 
-def frame2video(path, mode = 0):
+        return self.img
 
-    path_img = sorted(glob.glob(path + '/*'))[0]
-    img = cv2.imread(path_img)
-    size_img = img.shape
-    w = size_img[1]
-    h = size_img[0]
+    def to_BGR(self):
 
-    size = (w, h)
+        self.img = cv2.cvtColor(self.img, cv2.COLOR_RGB2BGR)
 
-    filelist = os.listdir(path)
-    filelist2 = [os.path.join(path, i) for i in filelist]
-    filelist2 = sorted(filelist2)
-    # print(filelist2)
-    fps = 30  
+        return self.img
 
-    out = time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
-    
-    if mode == 1:
-        video = cv2.VideoWriter(path + "/Video.mp4", cv2.VideoWriter_fourcc('m','p','4','v'), fps,
-                            size) 
+    def ori(self):
 
-    elif mode == 0:
-        video = cv2.VideoWriter('/Users/songminglun/Documents/ILCS/ilcs_5/slib/slib_img/saved_video/' + str(out) + '.mp4', cv2.VideoWriter_fourcc('m','p','4','v'), fps,
-                            size) 
+        self.img = self.img
 
-    for item in filelist2:
-        # print(item)
-        if item.endswith('.jpg'):
-            # print(item)
-            img = cv2.imread(item)
-            video.write(img)
+        return self.img
 
-    video.release()
-    cv2.destroyAllWindows()
-    print('DONE')
 
-if __name__ == '__main__':
-    imshow('/Users/songminglun/Documents/ILCS/2021/MTG資料/0521/video/kurita_001/video_3')
+    def show(self):
+
+        if self.img.ndim == 3:
+            plt.imshow(self.img)
+        elif self.img.ndim == 2:
+            plt.imshow(self.img, cmap='gray')
+        plt.show()
+
+    def save(self):
+
+        cv2.imwrite(self.path, self.img) 
+
+    def resize(self, height, weight):
+
+        self.img = cv2.resize(self.img, (height, weight))
+

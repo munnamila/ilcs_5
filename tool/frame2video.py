@@ -29,7 +29,7 @@ import argparse
 #     cv2.destroyAllWindows()
 #     print('DONE')
 
-def frame2video(path):
+def frame2video(path, fps):
 
     path_img = sorted(glob.glob(path + '/*'))[0]
     img = cv2.imread(path_img)
@@ -43,7 +43,7 @@ def frame2video(path):
     filelist2 = [os.path.join(path, i) for i in filelist]
     filelist2 = sorted(filelist2)
     # print(filelist2)
-    fps = 30  
+ 
     video = cv2.VideoWriter(path + "/Video.avi", cv2.VideoWriter_fourcc('M','J','P','G'), fps,
                             size) 
 
@@ -61,6 +61,6 @@ def frame2video(path):
         
 
 if __name__ == '__main__':
-    files = sorted(glob.glob('/Users/songminglun/Documents/ILCS/2021/MTG資料/0521/video/kurita_001/video_6'))
+    files = sorted(glob.glob('/Users/songminglun/Documents/ILCS/2021/code/08_16/test_data/W2_6_000002'))
     for i in files:
-        frame2video(i)
+        frame2video(i, fps = 5)
