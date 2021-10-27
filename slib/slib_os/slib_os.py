@@ -1,7 +1,8 @@
 import os
+import glob
 
 def test():
-    print('You already can use slib_os!!!')
+    print('You already can use slib_os!!!!')
 
 def mkdir(dir_name):
     isExists = os.path.exists(dir_name)
@@ -10,7 +11,7 @@ def mkdir(dir_name):
         os.makedirs(dir_name)
     
     else:
-        print('File exists')
+        pass
 
 def mv(src, tgt):
     os.system('mv ' + src + ' ' + tgt)
@@ -33,6 +34,35 @@ def merge(lists):
 
     return new_path
 
+def recreate_video(path_video):
+    import cv2
+
+def release_files(src):
+
+    print('starting...')
+
+    files = sorted(glob.glob(src + '/*'))
+
+    tgt = merge(src.split('/')[:-1]) + '/'
+
+    print(tgt)
+
+    for i in files:
+
+        print(i)
+
+        os.system('mv ' + i + ' ' + tgt)
+
+    os.system('rm -r ' + src)
+
+    print('Done')
+
+    
+
+
+
+    
+
 
 if __name__ == '__main__':
-    pass
+    release_files('/Users/songminglun/Desktop/test的副本')
