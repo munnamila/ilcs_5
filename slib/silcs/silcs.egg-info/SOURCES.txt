@@ -1,0 +1,5 @@
+setup.py
+silcs.egg-info/PKG-INFO
+silcs.egg-info/SOURCES.txt
+silcs.egg-info/dependency_links.txt
+silcs.egg-info/top_level.txt

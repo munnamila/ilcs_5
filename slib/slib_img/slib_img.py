@@ -1,6 +1,9 @@
+# sou meirin
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+
+import slib_os  as so
 
 class Img():
 
@@ -9,8 +12,9 @@ class Img():
 
         self.path = path
         self.img = cv2.imread(self.path)
+        print(self.img.shape)
 
-    def size(self):
+    def shape(self):
         # I.size()
 
         return self.img.shape
@@ -52,9 +56,14 @@ class Img():
 
     def save(self):
 
-        cv2.imwrite(self.path, self.img) 
+        print(self.path.split('.'))
+
+        # cv2.imwrite(self.path, self.img) 
 
     def resize(self, height, weight):
 
         self.img = cv2.resize(self.img, (height, weight))
+
+if __name__ == '__main__':
+    pass
 

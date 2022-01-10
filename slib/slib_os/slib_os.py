@@ -2,22 +2,29 @@ import os
 import glob
 
 def test():
+    # test
+    # slib_os.test()
+    # done
     print('You already can use slib_os!!!!')
 
 def mkdir(dir_name):
+    # create a dir
+    # slib_os.mkdir('test/')
+    # done
     isExists = os.path.exists(dir_name)
 
     if not isExists:
         os.makedirs(dir_name)
-    
     else:
         pass
 
 def mv(src, tgt):
+    # move file or dir
+    # slib_os.mv('dir1/test', 'dir2/')
     os.system('mv ' + src + ' ' + tgt)
 
-def cp(mode, src, tgt):
-    if mpde == '-r':
+def cp(mode = None, src, tgt):
+    if mode == '-r':
         os.system('cp ' + '-r ' +  src + ' ' + tgt)
 
     else:
@@ -34,8 +41,6 @@ def merge(lists):
 
     return new_path
 
-def recreate_video(path_video):
-    import cv2
 
 def release_files(src):
 
