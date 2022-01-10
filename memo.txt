@@ -1,4 +1,9 @@
 ssh-keygen -R 172.16.171.102
 
+git
+git add .
+git commit -m 'message'
+git push origin main
+
 Linux录屏
 ffmpeg -f x11grab -video_size 1920x1080 -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac screen.mp4
