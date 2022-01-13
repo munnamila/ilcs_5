@@ -23,7 +23,7 @@ def mv(src, tgt):
     # slib_os.mv('dir1/test', 'dir2/')
     os.system('mv ' + src + ' ' + tgt)
 
-def cp(mode = None, src, tgt):
+def cp(src, tgt, mode= None):
     if mode == '-r':
         os.system('cp ' + '-r ' +  src + ' ' + tgt)
 
