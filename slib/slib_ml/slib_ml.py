@@ -14,3 +14,6 @@ def confusion_matrix(list_labels, list_predictions):
     plt.xlabel('prediction')
     plt.ylabel('truth')
     plt.show()
+
+def print_training_info(train_accuracy, train_loss, test_accuracy, test_loss):
+    print('train_accuracy: %.05f train_loss: %.05f test_accuracy: %.05f test_loss: %.05f' % (train_accuracy, train_loss, test_accuracy, test_loss))
