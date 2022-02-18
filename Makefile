@@ -46,3 +46,12 @@ install_openface:
 	conda install -c conda-forge imagehash
 	conda install -c anaconda service_identity
 
+install_pytotch_GPU:
+	conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+	conda install -c conda-forge opencv
+        conda install -c conda-forge tqdm
+        conda install -c conda-forge matplotlib
+        conda install -c anaconda pandas
+        conda install -c anaconda scipy
+        conda install -c anaconda scikit-learn
+        conda install -c anaconda scikit-image

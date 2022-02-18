@@ -6,7 +6,8 @@ import seaborn as sns
 def test():
     print('OK')
 
-def confusion_matrix(list_labels, list_predictions):
+def ConfusionMatrix(list_labels, list_predictions):
+    from sklearn.metrics import confusion_matrix
     cm = confusion_matrix(list_labels, list_predictions)
     fig = plt.figure()
     sns_plot = sns.heatmap(cm, annot=True, cmap='Greys')
@@ -35,5 +36,36 @@ def print_graph_info(train_accuracy_list, train_loss_list, test_accuracy_list, t
     plt.ylabel('accuracy')
     plt.legend(bbox_to_anchor=(1,1), loc='center left')
     plt.show()
+
+def print_dataset_info(y_train, y_test):
+    
+    out_train = {}
+    out_test = {}
+    
+    for i in y_train:
+        if i in out_train:
+            out_train[i] += 1
+        else:
+            out_train[i] = 0
+            
+    for i in y_test:
+        if i in out_test:
+            out_test[i] += 1
+        else:
+            out_test[i] = 0
+            
+     
+    print('===================================')
+    print('train_data:')
+    for i in range(len(out_train)):
+        print('    category_' + str(i) + ':' + str(out_train[i]))
+    print('-----------------------------------')
+    print('test_data')
+    for i in range(len(out_test)):
+        print('    category_' + str(i) + ':' + str(out_test[i]))
+    print('===================================')
+            
+            
+    return out_train, out_test
 
 
