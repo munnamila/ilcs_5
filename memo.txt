@@ -7,3 +7,6 @@ git push origin main
 
 Linux录屏
 ffmpeg -f x11grab -video_size 1920x1080 -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac screen.mp4
+
+ps -u 查看进程PID
+kill -9 PID 强制终止进程
