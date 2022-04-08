@@ -8,6 +8,7 @@ def __version__():
     print('1.0.0')
 
 def keypoints_plot(src, src_img = None, plot_in_pic = False, show_accuracy = False):
+    # available
     
     list_x, list_y, list_accuracy = [], [], []
         
@@ -37,7 +38,15 @@ def keypoints_plot(src, src_img = None, plot_in_pic = False, show_accuracy = Fal
         plt.scatter(list_x, list_y)
         plt.show()
 
+def keypoints_anime(src, output):
+    # src: npz_file
+    # saved path
+
+    pass
+    data = np.load(src, allow_pickle=True)
+    for i in data['pose']:
+        print(i)
 
     
 if __name__ == '__main__':
-    pass
+    keypoints_anime('/Users/songminglun/Desktop/keypoints.npz', 1)
