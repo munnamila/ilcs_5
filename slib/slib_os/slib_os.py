@@ -62,6 +62,19 @@ def release_files(src):
 
     print('Done')
 
+    def change_files_in_dir_to_counting(src, number_of_digits):
+        # 把文件夹里的文件，按数字顺重命名
+        # src: 文件夹的路径
+        # number_of_digits: 数位
+        # doing
+
+        files = sorted(glob.glob(src + '/*'))
+
+        for num, i in enumerate(files):
+
+            os.system('mv ' + str(i) + ' ' + '%06d' % num)
+
+
     
 
 
