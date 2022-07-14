@@ -7,8 +7,9 @@ def summary(video_path, info=True):
     cap = cv2.VideoCapture(video_path)
     width = int(cap.get(3))# width
     hight = int(cap.get(4))# hight
+    totle_frame = int(cap.get(7))
     frame_rate = cap.get(5)
-    video_time = cap.get(7) / frame_rate
+    video_time = totle_frame / frame_rate
     video_time_s = format(video_time, '.2f')
     video_time_min = format(video_time/60, '.2f')
     video_time_h = format(video_time/3600, '.2f')
@@ -19,6 +20,7 @@ def summary(video_path, info=True):
         print('path of video: ', video_path)
         print('The width of this video: ' + str(width) + 'pixcel')
         print('The hight of this video: ' + str(hight) + 'pixcel')
+        print('Totle num of frame: ' + str(totle_frame))
         print('The frame_rate of this video: ' + str(frame_rate) + 'fps')
         print('The video_time of this video: ' + video_time_s + 's | ' + video_time_min + 'min | ' + video_time_h + 'h')
         print('===========================================================================================')
