@@ -1,0 +1,18 @@
+import json
+import pandas as pd
+
+
+# Read json file
+with open(file_path, 'rb') as f:
+    content = 
+
+# write json
+list = [dict]
+with open(file_path, 'w) as f:
+    json.dump(lsit, f)
+
+# DateFrame to json
+j = df.to_json()
+
+# DateFrame to json and write
+df.to_json(path, orient='records')
