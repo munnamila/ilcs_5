@@ -75,6 +75,21 @@ def release_files(src):
             os.system('mv ' + str(i) + ' ' + '%06d' % num)
 
 
+def time_transform(input_time):
+    # second to time
+    # 3600 => 01:00:00
+
+    min = 60
+    hour = 60 * 60
+
+    HOUR = input_time // hour
+    MINUT = (input_time - (HOUR * hour)) // min
+    SECONDS = input_time - ((HOUR * hour) + (MINUT * min))
+
+    print('{}:{}:{}'.format('%02d' % HOUR, '%02d' %MINUT, '%02d' %SECONDS))
+
+
+
     
 
 
@@ -83,4 +98,5 @@ def release_files(src):
 
 
 if __name__ == '__main__':
-    release_files('/Users/songminglun/Desktop/test的副本')
+    # release_files('/Users/songminglun/Desktop/test的副本')
+    time_transform(99010)
