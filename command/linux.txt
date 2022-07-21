@@ -1,3 +1,5 @@
 du -sh 查看当前文件夹用量
 du -sh * 查看当前文件夹下一层文件/文件夹的用量
 df -h 查看系统各个分区的用量
+
+gnome-system-monitor 监视电脑状态
