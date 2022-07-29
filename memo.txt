@@ -13,4 +13,7 @@ kill -9 PID 强制终止进程
 
 
 a = 1
-b = '%06d' % a
+b = '%06d' % 
+
+查看电脑状态
+gnome-system-monitor
