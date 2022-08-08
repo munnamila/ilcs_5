@@ -3,3 +3,24 @@ du -sh * 查看当前文件夹下一层文件/文件夹的用量
 df -h 查看系统各个分区的用量
 
 gnome-system-monitor 监视电脑状态
+
+cat /etc/issue 查看ubuntu版本
+
+sudo adduser name 添加用户
+sudo userdel name 删除用户
+
+apt-get update -y 更新安装包
+apt-get upgrade -y
+
+sudo apt-get install git 安装git
+
+# mount
+sudo umount disk_path #解绑(ex: sudo umount /dev/sda2)
+
+sudo blkid disk_path #获得被解绑硬盘的信息UUID和TYPE(sudo blkid /dev/sda2)
+
+sudo gedit /etc/fstab #更改挂载点
+
+UUID=? 'path' 'type' defaults 0 2 #设置挂载点，加在最后一行，保存关闭
+
+

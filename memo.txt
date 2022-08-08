@@ -4,6 +4,9 @@ git
 git add .
 git commit -m 'message'
 git push origin main
+git branch -d branch_name # 删除本地分支
+git push origin -d branch_name # 删除远程分支 
+
 
 Linux录屏
 ffmpeg -f x11grab -video_size 1920x1080 -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac screen.mp4
