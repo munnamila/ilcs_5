@@ -64,13 +64,13 @@ class Img():
 
         print(self.path.split('.'))
 
-        # cv2.imwrite(self.path, self.img) 
+        cv2.imwrite(self.path, self.img) 
 
     def resize(self, height, weight):
 
         self.img = cv2.resize(self.img, (height, weight))
 
-def change_font_of_images(src, font, size=None):
+def change_images_font(src, font, size=None):
     """
     フォルダ中の画像のフォント変換する
     src: 画像フォルダ
