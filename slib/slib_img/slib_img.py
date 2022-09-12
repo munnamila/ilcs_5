@@ -70,33 +70,80 @@ class Img():
 
         self.img = cv2.resize(self.img, (height, weight))
 
-def change_images_font(src, font, size=None):
-    """
-    フォルダ中の画像のフォント変換する
-    src: 画像フォルダ
-    font: 変換後のフォント
-    """
 
-    files = sorted(glob.glob(src + '/*'))
+class ImgFolder():
 
-    for i in tqdm(files):
+    def __init__(self, path):
 
-        img = cv2.imread(i)
+        self.path = path
 
-        if size != None:
+    def change_format(self, format, new_folder):
+        """
+        フォルダ中の画像のフォント変換する
+        src: 画像フォルダ
+        font: 変換後のフォント
+        """
 
-            img = cv2.resize(img, size)
+        isExists = os.path.exists(new_folder)
 
-        new_path = i[:-3] + font
+        if isExists:
+            print('Directory exists')
 
-        os.system('rm ' + str(i))
+        else:
 
-        cv2.imwrite(new_path, img)
+            os.mkdir(new_folder)
+
+            files = sorted(glob.glob(self.path + '/*'))
+
+            for i in tqdm(files):
+
+                img = cv2.imread(i)
+
+                new_path = new_folder + '/' + i.split('/')[-1][:-3] + format
+
+                cv2.imwrite(new_path, img)
+
+    def reverse_index(self, new_folder):
+
+        isExists = os.path.exists(new_folder)
+
+        if isExists:
+
+            print('directory exists!')
+
+        else:
+
+            os.mkdir(new_folder)
+
+            files = sorted(glob.glob(self.path + '/*'))
+
+            format = files[0].split('.')[-1]
+
+            length = len(files)
+
+            for i in tqdm(files):
+
+                length -= 1
+
+                file_name = '%03d' % length + '.' + format
+
+                img = cv2.imread(i)
+
+                save_path = new_folder + '/' + file_name
+
+                cv2.imwrite(save_path, img)
+
+
+
+
+
 
 
 
 
 
 if __name__ == '__main__':
-    change_font_of_images('/Users/songminglun/Documents/toa/planter/220613＿png改jpg/sq1', 'jpg')
+    imgs = ImgFolder('/Users/songminglun/Documents/toa/planter/img/dry_new/1')
+    imgs.reverse_index('/Users/songminglun/Documents/toa/planter/img/dry_new/3')
+    # imgs.change_images_font('jpg', '/Users/songminglun/Documents/toa/planter/img/dry_new')
 
