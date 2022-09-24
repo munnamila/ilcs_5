@@ -53,3 +53,32 @@ def data_analysis(src, info=True):
             'mode': mode, 
             'max_value': max_value, 
             'max_index': max_index}
+
+def list_calculata(list1: list, list2: list, d: str) -> list:
+
+    # listの間の計算
+
+    if len(list1) != len(list2):
+        print('sou: The lengths of the two lists are not the same!')
+        
+    re = []
+        
+    for i in range(len(list2)):
+        
+        if d == '+':
+            if list1[i] == None or list2[i] == None: re.append(None)
+            else: re.append(list1[i]+list2[i])
+                
+        if d == '-':
+            if list1[i] == None or list2[i] == None: re.append(None)
+            else: re.append(list1[i]-list2[i])
+                
+        if d == '*':
+            if list1[i] == None or list2[i] == None: re.append(None)
+            else: re.append(list1[i]*list2[i])
+                
+        if d == '/':
+            if list1[i] == None or list2[i] == None: re.append(None)
+            else: re.append(list1[i]/list2[i])
+            
+    return re
