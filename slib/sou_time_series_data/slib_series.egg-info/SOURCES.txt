@@ -1,0 +1,6 @@
+README.md
+setup.py
+slib_series.egg-info/PKG-INFO
+slib_series.egg-info/SOURCES.txt
+slib_series.egg-info/dependency_links.txt
+slib_series.egg-info/top_level.txt
