@@ -1,0 +1,3 @@
+# セルに横幅を広げる
+from IPython.display import display, HTML
+display(HTML("<style>.container { width:100% !important; }</style>"))
