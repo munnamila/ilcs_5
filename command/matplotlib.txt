@@ -4,3 +4,4 @@ display(HTML("<style>.container { width:100% !important; }</style>"))
 
 # matplotlib日本語化モジュールをまず実行環境にインストールする。
 !pip install japanize-matplotlib
+import japanize-matplotlib
